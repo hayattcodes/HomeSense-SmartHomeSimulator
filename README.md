@@ -38,3 +38,4 @@ POST /api/devices | POST /api/devices/{id}/power|config|schedule|motion | DELETE
 POST /api/rooms/power, /api/scenes/run, /api/time/advance, /api/settings
 
 Accounts are saved in `data/users.db` (hashed passwords). Devices live in memory and reset when the server restarts.
+Run the app with ./run.sh
