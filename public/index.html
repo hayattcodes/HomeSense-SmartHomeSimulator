@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HomeSense | Smart Home Control</title>
+  <meta name="description" content="Monitor and control your smart home devices, scenes and energy usage.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%234f46e5'/%3E%3Cpath d='M7 15l9-8 9 8v9a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1z' fill='none' stroke='white' stroke-width='2' stroke-linejoin='round'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ===================== AUTH ===================== -->
+<main id="auth-view" class="auth" hidden>
+  <section class="auth-brand">
+    <div class="brand-row"><span class="logo" id="brand-logo"></span><span class="brand-name">HomeSense</span></div>
+    <h1>Your whole home,<br>one calm dashboard.</h1>
+    <p class="lead">Control lights, fans, air conditioners and cameras, automate them with schedules and scenes, and see exactly where your electricity goes.</p>
+    <ul class="feature-list">
+      <li><span id="f1"></span><div><strong>Instant control</strong><small>Switch a device or a whole room with one tap</small></div></li>
+      <li><span id="f2"></span><div><strong>Scenes &amp; schedules</strong><small>Night, Away and Movie modes, plus daily timers</small></div></li>
+      <li><span id="f3"></span><div><strong>Energy insights</strong><small>Per-room usage, estimated bill and saving tips</small></div></li>
+    </ul>
+    <div class="orb orb-a"></div><div class="orb orb-b"></div>
+  </section>
+
+  <section class="auth-panel">
+    <div class="auth-card">
+      <div class="tabs" role="tablist">
+        <button class="tab active" data-auth-tab="login" role="tab">Sign in</button>
+        <button class="tab" data-auth-tab="signup" role="tab">Create account</button>
+      </div>
+
+      <form id="login-form" class="form" autocomplete="on" novalidate>
+        <h2>Welcome back</h2>
+        <p class="sub">Sign in to manage your home.</p>
+        <div class="alert alert-error" data-error hidden></div>
+        <label class="field"><span>Username</span>
+          <input name="username" autocomplete="username" required placeholder="e.g. hayatt_khan"></label>
+        <label class="field"><span>Password</span>
+          <div class="pw"><input name="password" type="password" autocomplete="current-password" required placeholder="Your password">
+          <button type="button" class="pw-toggle" data-action="toggle-pw" aria-label="Show password">Show</button></div></label>
+        <button class="btn btn-primary btn-block" type="submit">Sign in</button>
+        <p class="switch-note">New here? <a href="#" data-auth-tab="signup">Create an account</a></p>
+      </form>
+
+      <form id="signup-form" class="form" autocomplete="on" hidden novalidate>
+        <h2>Create your account</h2>
+        <p class="sub">Your own private home with sample devices to explore.</p>
+        <div class="alert alert-error" data-error hidden></div>
+        <label class="field"><span>Full name</span>
+          <input name="name" autocomplete="name" required placeholder="Your name"></label>
+        <label class="field"><span>Username</span>
+          <input name="username" autocomplete="username" required placeholder="3-20 letters, numbers or _"></label>
+        <label class="field"><span>Password</span>
+          <div class="pw"><input name="password" type="password" autocomplete="new-password" required placeholder="At least 8 characters">
+          <button type="button" class="pw-toggle" data-action="toggle-pw" aria-label="Show password">Show</button></div>
+          <div class="strength"><i></i><i></i><i></i><i></i></div><small class="hint" id="pw-hint">Use 8+ characters with a mix of letters and numbers.</small></label>
+        <label class="field"><span>Confirm password</span>
+          <input name="confirm" type="password" autocomplete="new-password" required placeholder="Repeat password"></label>
+        <button class="btn btn-primary btn-block" type="submit">Create account</button>
+        <p class="switch-note">Already registered? <a href="#" data-auth-tab="login">Sign in</a></p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<!-- ===================== APP ===================== -->
+<div id="app-view" class="app" hidden>
+  <aside class="sidebar">
+    <div class="brand-row"><span class="logo" id="side-logo"></span><span class="brand-name">HomeSense</span></div>
+    <nav id="nav"></nav>
+    <div class="side-foot">
+      <div class="user-chip">
+        <span class="avatar" id="user-avatar">U</span>
+        <div><strong id="user-name">User</strong><small id="user-handle"></small></div>
+      </div>
+      <button class="btn btn-ghost-dark btn-block" data-action="logout"><span id="logout-ic"></span> Sign out</button>
+    </div>
+  </aside>
+
+  <div class="main">
+    <header class="topbar">
+      <div><h1 id="page-title">Dashboard</h1><p id="page-sub" class="sub"></p></div>
+      <div class="top-actions">
+        <div class="clock-chip" id="clock-chip"></div>
+        <button class="btn btn-primary" data-action="add-open"><span id="add-ic"></span> Add device</button>
+      </div>
+    </header>
+    <div id="content" class="content"></div>
+  </div>
+</div>
+
+<div id="modal-root"></div>
+<div id="toasts" aria-live="polite"></div>
+<script src="js/app.js"></script>
+</body>
+</html>
